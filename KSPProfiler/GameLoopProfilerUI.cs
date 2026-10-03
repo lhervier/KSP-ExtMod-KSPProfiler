@@ -331,6 +331,35 @@ namespace KSPProfiler
             manualCaptureButton.Text = "Start capture";
         }
 
+        // For McpTools: the buttons and fields a player uses, pressed and filled the same way, so that a
+        // script measures exactly what a player measures.
+
+        /// <summary>Presses the AutoCapture button.</summary>
+        internal void PressAutoCapture()
+        {
+            OnSwitchAutoCapture();
+        }
+
+        /// <summary>Presses the Start capture / Stop capture button.</summary>
+        internal void PressManualCapture()
+        {
+            OnManualCapture();
+        }
+
+        /// <summary>Types a number into Frames to capture; returns the number kept.</summary>
+        internal string TypeCapturedFrames(int frames)
+        {
+            return OnCapturedFramesChanged(frames.ToString());
+        }
+
+        /// <summary>Types the folder and the file name of the export, then presses Export to CSV.</summary>
+        internal void PressExport(string directory, string fileName)
+        {
+            exportDirectory.Text = directory;
+            exportFileName.Text = fileName;
+            ExportToCSV();
+        }
+
         private string OnUpdateIntervalChanged(string input)
         {
             if (!float.TryParse(input, out float interval))
