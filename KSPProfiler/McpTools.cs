@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 namespace KSPProfiler
 {
@@ -80,6 +81,24 @@ namespace KSPProfiler
             Directory.CreateDirectory(directory);
             ui.PressExport(directory, fileName);
             return Path.Combine(directory, fileName);
+        }
+
+        [McpTool("profiler_move_window",
+            "Moves the window of KSP Profiler, as dragging it does: x and y of the window's centre from the " +
+                "screen's centre, in the units of the game's interface, y upwards. Returns its position and size " +
+                "(x, y, width, height).")]
+        internal static object MoveWindow(double x, double y)
+        {
+            Window();
+            RectTransform transform = UIManager.window.TopTransform;
+            transform.anchoredPosition = new Vector2((float)x, (float)y);
+            return new Dictionary<string, object>
+            {
+                { "x", (double)transform.anchoredPosition.x },
+                { "y", (double)transform.anchoredPosition.y },
+                { "width", (double)transform.rect.width },
+                { "height", (double)transform.rect.height }
+            };
         }
 
         [McpTool("profiler_state",
