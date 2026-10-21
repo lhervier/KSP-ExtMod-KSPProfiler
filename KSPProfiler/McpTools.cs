@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KSPProfiler
 {
     /// <summary>
-    /// Marks a method as a tool of KSP-MCPServer (https://github.com/lhervier/KSP-MCPServer), which looks for
+    /// Marks a method as a tool of KSP-Util-MCPServer (https://github.com/lhervier/KSP-Util-MCPServer), which looks for
     /// an attribute of this name in every loaded mod. Declared here so that this mod depends on nothing: when
     /// the server is not installed, nothing reads it.
     /// </summary>
@@ -24,7 +24,7 @@ namespace KSPProfiler
     }
 
     /// <summary>
-    /// What KSP-MCPServer, when it is installed, offers of this mod as tools: the buttons and fields of its
+    /// What KSP-Util-MCPServer, when it is installed, offers of this mod as tools: the buttons and fields of its
     /// window, pressed and filled as a player does, and nothing that would measure differently.
     /// </summary>
     internal static class McpTools
